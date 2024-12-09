@@ -1,20 +1,17 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement; // Required for SceneManager
 
 public class AudioManager : MonoBehaviour
 {
     [Header("--------------Audio Source--------------")]
-    [SerializeField] private AudioSource musicSource;
-    [SerializeField] private AudioSource SFXSource1; // For SFX1
-    [SerializeField] private AudioSource SFXSource2; // For SFX2
-    [SerializeField] private AudioSource SFXSource3; // For SFX3
+    [SerializeField] AudioSource musicSource;
+    [SerializeField] AudioSource SFXSource;
 
     [Header("--------------Audio Sound--------------")]
-    public AudioClip music;
-    public AudioClip SFX1;
-    public AudioClip SFX2;
-    public AudioClip SFX3;
+    public AudioClip Music;
+    public AudioClip SFX;
 
     private static AudioManager instance; // Singleton reference to ensure one instance
 
@@ -35,20 +32,10 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        // Play the background music
-        if (musicSource != null && music != null)
-        {
-            musicSource.clip = music;
-            musicSource.loop = true; // Optional: Enable looping for background music
-            musicSource.Play();
-        }
-
-        // Play SFX1 immediately
-        PlaySFX(SFXSource1, SFX1);
-
-        // Start coroutines for periodic sound effects
-        StartCoroutine(PlaySFX2EveryTwoMinutes());
-        StartCoroutine(PlaySFX3StartingFromThreeMinutes());
+        musicSource.clip = Music;
+        musicSource.Play();
+        SFXSource.clip = SFX;
+        SFXSource.Play();
 
         // Subscribe to scene load events
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -66,37 +53,6 @@ public class AudioManager : MonoBehaviour
         if (scene.name == "In Game UI") // Replace with the actual scene name
         {
             Destroy(gameObject); // Destroy the AudioManager when entering this scene
-        }
-    }
-
-    // Method to play a specific SFX using a dedicated AudioSource
-    private void PlaySFX(AudioSource source, AudioClip clip)
-    {
-        if (source != null && clip != null)
-        {
-            source.clip = clip;
-            source.Play();
-        }
-    }
-
-    // Coroutine to play SFX2 every 2 minutes
-    private IEnumerator PlaySFX2EveryTwoMinutes()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(120f); // Wait for 2 minutes
-            PlaySFX(SFXSource2, SFX2);
-        }
-    }
-
-    // Coroutine to play SFX3 every 5 minutes starting from 3 minutes
-    private IEnumerator PlaySFX3StartingFromThreeMinutes()
-    {
-        yield return new WaitForSeconds(30f); // Initial wait of 3 minutes
-        while (true)
-        {
-            PlaySFX(SFXSource3, SFX3);
-            yield return new WaitForSeconds(80f); // Wait for 5 minutes
         }
     }
 }

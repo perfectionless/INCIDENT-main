@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/INCIDENT_prototype.unity
-    guid: d29071f3fc8eea545ae26ddc055b8fd9
-  - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/INCIDENT_newmodel.unity
+    guid: 16b6bcdf24fc0a644a744d1e7ae800d8
   - enabled: 1
     path: Assets/Scenes/Settings.unity
     guid: d77a554f38484f544948c0d56f348215
@@ -20,7 +20,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/In Game UI.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scenes/INCIDENT_newmodel.unity
-    guid: 16b6bcdf24fc0a644a744d1e7ae800d8
   m_configObjects: {}

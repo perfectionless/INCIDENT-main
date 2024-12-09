@@ -11,7 +11,7 @@ public class NewBehaviourScript : MonoBehaviour, IPointerEnterHandler, IPointerE
 
     public void PlayGame()
     {
-        SceneManager.LoadSceneAsync(5);
+        SceneManager.LoadSceneAsync(1);
     }
 
     public void LoadGame()

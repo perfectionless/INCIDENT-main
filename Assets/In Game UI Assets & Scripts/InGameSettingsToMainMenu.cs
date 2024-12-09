@@ -8,6 +8,6 @@ public class InGameSettingsToMainMenu : MonoBehaviour
     // Start is called before the first frame update
     public void BackToMenu()
     {
-        SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadScene("Main Menu");
     }
 }
