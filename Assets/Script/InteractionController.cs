@@ -26,6 +26,7 @@ public class InteractionController : MonoBehaviour
 
     public bool isLookingAtLever;
     private GameObject leverObject;
+    public AudioSource audioSource;
 
     public float doorOpenTime = 3f;
 
@@ -247,6 +248,11 @@ public class InteractionController : MonoBehaviour
                 {
                     Coroutine doorCoroutine = StartCoroutine(OpenDoorTemporarily(doorObject));
                     openDoors.Add(doorObject, doorCoroutine);
+
+                    if (audioSource != null)
+                    {
+                        audioSource.Play();
+                    }
                 }
             }
         }
